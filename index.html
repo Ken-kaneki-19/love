@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I Love You Kriti ❤️</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      overflow:hidden;
+      font-family:'Poppins',sans-serif;
+      height:100vh;
+      background:linear-gradient(to bottom,#ffd1dc,#fff0f5);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      position:relative;
+      color:white;
+    }
+
+    /* Background Cherry Blossom Trees */
+    .tree{
+      position:absolute;
+      bottom:0;
+      width:180px;
+      height:320px;
+      z-index:1;
+    }
+
+    .tree.left{
+      left:-20px;
+    }
+
+    .tree.right{
+      right:-20px;
+      transform:scaleX(-1);
+    }
+
+    .trunk{
+      position:absolute;
+      bottom:0;
+      left:50%;
+      transform:translateX(-50%);
+      width:35px;
+      height:180px;
+      background:#6b3e26;
+      border-radius:20px;
+    }
+
+    .branch{
+      position:absolute;
+      background:#6b3e26;
+      border-radius:20px;
+    }
+
+    .b1{
+      width:90px;
+      height:15px;
+      top:90px;
+      left:20px;
+      transform:rotate(-25deg);
+    }
+
+    .b2{
+      width:90px;
+      height:15px;
+      top:120px;
+      right:20px;
+      transform:rotate(25deg);
+    }
+
+    .leaves{
+      position:absolute;
+      top:0;
+      left:50%;
+      transform:translateX(-50%);
+      width:180px;
+      height:180px;
+      background:radial-gradient(circle,#ffb7d5,#ff69b4);
+      border-radius:50%;
+      box-shadow:
+      -40px 20px #ffc0cb,
+      40px 20px #ff9ec4,
+      0 50px #ffb6c1;
+    }
+
+    /* Main Content */
+    .container{
+      position:relative;
+      z-index:5;
+      padding:20px;
+      width:90%;
+      max-width:500px;
+    }
+
+    h1{
+      font-size:3rem;
+      text-shadow:0 0 20px rgba(255,255,255,0.8);
+      animation:glow 2s infinite alternate;
+    }
+
+    h2{
+      margin-top:15px;
+      font-weight:300;
+      font-size:1.3rem;
+      color:#fff;
+    }
+
+    .love{
+      color:#ff004f;
+      font-size:4rem;
+      animation:heartbeat 1s infinite;
+      display:block;
+      margin:20px 0;
+    }
+
+    @keyframes glow{
+      from{
+        text-shadow:0 0 10px #fff;
+      }
+      to{
+        text-shadow:0 0 30px #ff4da6;
+      }
+    }
+
+    @keyframes heartbeat{
+      0%{transform:scale(1);}
+      25%{transform:scale(1.2);}
+      50%{transform:scale(1);}
+      75%{transform:scale(1.2);}
+      100%{transform:scale(1);}
+    }
+
+    /* Floating Hearts */
+    .heart{
+      position:absolute;
+      color:#ff3366;
+      font-size:20px;
+      animation:floatUp linear infinite;
+      opacity:0.8;
+      z-index:2;
+    }
+
+    @keyframes floatUp{
+      0%{
+        transform:translateY(100vh) scale(0.5);
+        opacity:0;
+      }
+      20%{
+        opacity:1;
+      }
+      100%{
+        transform:translateY(-120vh) scale(1.5);
+        opacity:0;
+      }
+    }
+
+    /* Falling Roses */
+    .rose{
+      position:absolute;
+      top:-50px;
+      font-size:24px;
+      animation:fall linear infinite;
+      z-index:2;
+    }
+
+    @keyframes fall{
+      0%{
+        transform:translateY(-50px) rotate(0deg);
+      }
+      100%{
+        transform:translateY(110vh) rotate(360deg);
+      }
+    }
+
+    /* Cherry Blossom Petals */
+    .petal{
+      position:absolute;
+      top:-20px;
+      color:#ffc0cb;
+      font-size:18px;
+      animation:petalFall linear infinite;
+      z-index:2;
+    }
+
+    @keyframes petalFall{
+      0%{
+        transform:translateY(-20px) translateX(0) rotate(0deg);
+        opacity:0.8;
+      }
+      100%{
+        transform:translateY(110vh) translateX(120px) rotate(360deg);
+        opacity:0;
+      }
+    }
+
+    /* Mobile Responsive */
+    @media(max-width:600px){
+      h1{
+        font-size:2.2rem;
+      }
+
+      h2{
+        font-size:1rem;
+      }
+
+      .love{
+        font-size:3rem;
+      }
+
+      .tree{
+        width:130px;
+        height:240px;
+      }
+
+      .leaves{
+        width:130px;
+        height:130px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Cherry Blossom Trees -->
+  <div class="tree left">
+    <div class="trunk"></div>
+    <div class="branch b1"></div>
+    <div class="branch b2"></div>
+    <div class="leaves"></div>
+  </div>
+
+  <div class="tree right">
+    <div class="trunk"></div>
+    <div class="branch b1"></div>
+    <div class="branch b2"></div>
+    <div class="leaves"></div>
+  </div>
+
+  <!-- Main Message -->
+  <div class="container">
+    <h1>I Love You Kriti ❤️</h1>
+    <span class="love">💖</span>
+    <h2>
+      You are the most beautiful part of my life 🌸<br>
+      Forever & Always 💕
+    </h2>
+  </div>
+
+  <script>
+    // Floating Hearts
+    function createHeart(){
+      const heart=document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML='❤️';
+
+      heart.style.left=Math.random()*100+'vw';
+      heart.style.animationDuration=(4+Math.random()*4)+'s';
+      heart.style.fontSize=(15+Math.random()*25)+'px';
+
+      document.body.appendChild(heart);
+
+      setTimeout(()=>{
+        heart.remove();
+      },8000);
+    }
+
+    setInterval(createHeart,300);
+
+    // Falling Roses
+    function createRose(){
+      const rose=document.createElement('div');
+      rose.classList.add('rose');
+      rose.innerHTML='🌹';
+
+      rose.style.left=Math.random()*100+'vw';
+      rose.style.animationDuration=(5+Math.random()*5)+'s';
+      rose.style.fontSize=(20+Math.random()*20)+'px';
+
+      document.body.appendChild(rose);
+
+      setTimeout(()=>{
+        rose.remove();
+      },10000);
+    }
+
+    setInterval(createRose,600);
+
+    // Cherry Blossom Petals
+    function createPetal(){
+      const petal=document.createElement('div');
+      petal.classList.add('petal');
+      petal.innerHTML='🌸';
+
+      petal.style.left=Math.random()*100+'vw';
+      petal.style.animationDuration=(6+Math.random()*6)+'s';
+      petal.style.fontSize=(12+Math.random()*18)+'px';
+
+      document.body.appendChild(petal);
+
+      setTimeout(()=>{
+        petal.remove();
+      },12000);
+    }
+
+    setInterval(createPetal,250);
+
+    // Confetti Burst
+    function launchConfetti(){
+      confetti({
+        particleCount:150,
+        spread:100,
+        origin:{ y:0.6 }
+      });
+    }
+
+    setInterval(launchConfetti,4000);
+
+    launchConfetti();
+  </script>
+
+</body>
+</html>
